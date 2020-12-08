@@ -8,7 +8,7 @@
 
 # Media: images, video, audio
   ExpiresByType image/webp "access plus 1 month"
-  ExpiresByType image/* "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
   
 # CSS and JavaScript
   ExpiresByType application/javascript "access plus 1 week"
