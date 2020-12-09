@@ -1,16 +1,15 @@
-# Expires headers
-
-<IfModule mod_expires.c>
-  ExpiresActive on
-
-# Your document html
-  ExpiresByType text/html "access plus 0 seconds"
-
-# Media: images, video, audio
-  ExpiresByType image/webp "access plus 1 month"
-  ExpiresByType image/png "access plus 1 month"
-  
-# CSS and JavaScript
-  ExpiresByType application/javascript "access plus 1 week"
-  ExpiresByType text/css "access plus 1 week"
+<IfModule mod_headers.c>
+ <FilesMatch "\.(ico|jpe?g|png|gif|swf|css|gz|webp)$">
+ Header set Cache-Control "max-age=2592000, public"
+ </FilesMatch>
+ <FilesMatch "\.(js)$">
+ Header set Cache-Control "max-age=2592000, private"
+ </FilesMatch>
+<filesMatch "\.(html|htm)$">
+Header set Cache-Control "max-age=7200, public"
+</filesMatch>
+# Disable caching for scripts and other dynamic files
+<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+Header unset Cache-Control
+</FilesMatch>
 </IfModule>
